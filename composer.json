@@ -1,0 +1,31 @@
+{
+    "name": "neon/tutorial-event",
+    "type": "typo3-cms-extension",
+    "description": "Practice extbase on a simple event extension",
+    "homepage": "https://docs.typo3.org/permalink/t3sitepackage:start",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Kristina Wiemann",
+            "role": "Developer",
+            "email": "neongame@outlook.de"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^14.3",
+        "typo3/cms-rte-ckeditor": "^14.3",
+        "typo3/cms-fluid-styled-content": "^14.3" 
+    },
+    "autoload": {
+        "psr-4": {
+            "Neon\\TutorialEvent\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "tutorial_event"
+        }
+    }
+}
