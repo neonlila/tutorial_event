@@ -4,17 +4,10 @@ A TYPO3 extension / package for managing and displaying events (built as part of
 
 > **Note:** Replace `[bracketed placeholders]` with the specific details from your repository (TYPO3 version, extension key/composer name, routes, and configuration).
 
-## Features
-
-- Event listings and detail views
-- Event registration / booking workflow (if applicable)
-- TypoScript & Fluid templates for frontend rendering
-- Custom routing / middlewares / domain logic (update to match your implementation)
-
 ## Requirements
 
 - **PHP:** `^8.2` (adjust to your `composer.json`)
-- **TYPO3:** `^12.4` or `^13.4` (adjust to your `composer.json`)
+- **TYPO3:** `^14.3` (adjust to your `composer.json`)
 - **Composer** (and **DDEV** / **Docker**, if used locally)
 
 ## Installation
@@ -32,6 +25,6 @@ If the package lives in `packages/tutorial_event` (or similar), add it to your r
     }
   ],
   "require": {
-    "neonlila/tutorial-event": "@dev"
+    "neon/tutorial-event": "@dev"
   }
 }
