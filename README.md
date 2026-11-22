@@ -1,51 +1,37 @@
-# Alle konfigurierten Tests ausführen
-vendor/bin/phpunit
+# Tutorial Event (`tutorial_event`)
 
-# Nur eine bestimmte Testsuite ausführen
-vendor/bin/phpunit --testsuite Unit
+A TYPO3 extension / package for managing and displaying events (built as part of a TYPO3 tutorial/workshop).
 
-# Nur eine einzelne Testdatei ausführen
-vendor/bin/phpunit packages/tutorial_event/Tests/Unit/Domain/Model/EventTest.php
+> **Note:** Replace `[bracketed placeholders]` with the specific details from your repository (TYPO3 version, extension key/composer name, routes, and configuration).
 
-# Nur Tests mit passendem Methodennamen ausführen
-vendor/bin/phpunit --filter testReserveSeatsReducesAvailableSeats
+## Features
 
-In der Praxis kapselt man das gerne in composer.json, damit alle im Team denselben Befehl nutzen:
+- Event listings and detail views
+- Event registration / booking workflow (if applicable)
+- TypoScript & Fluid templates for frontend rendering
+- Custom routing / middlewares / domain logic (update to match your implementation)
 
+## Requirements
+
+- **PHP:** `^8.2` (adjust to your `composer.json`)
+- **TYPO3:** `^12.4` or `^13.4` (adjust to your `composer.json`)
+- **Composer** (and **DDEV** / **Docker**, if used locally)
+
+## Installation
+
+### Via Composer (Path Repository / Local Package)
+
+If the package lives in `packages/tutorial_event` (or similar), add it to your root `composer.json`:
+
+```json
 {
-  "scripts": {
-    "test:unit": "phpunit --testsuite Unit"
+  "repositories": [
+    {
+      "type": "path",
+      "url": "packages/tutorial_event"
+    }
+  ],
+  "require": {
+    "neonlila/tutorial-event": "@dev"
   }
 }
-
-Dann kann man "composer test:unit" nutzen
-
-
-Beispiel für einen simplen GitHub-Actions-Workflow (.github/workflows/tests.yml):
-Automatisiert in der CI/CD-Pipeline | Bei jedem Push wird der workflow durchlaufen
-- schlägt ein Test fehl, wird abgebrochen
-
-name: Tests
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-
-jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          tools: composer
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress --no-interaction
-
-      - name: Run unit tests
-        run: composer test:unit
